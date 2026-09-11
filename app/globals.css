@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Fallback design tokens — the approved "Marino" palette.
+  These are overridden at runtime by [locale]/layout.tsx, which writes
+  the live values from Sanity siteSettings.theme into this same
+  custom-property set via an inline <style> tag, so Carolina can tweak
+  brand colors from the CMS without a redeploy.
+*/
+:root {
+  --color-primary: #1f3864;
+  --color-primary-dark: #142647;
+  --color-accent: #9c7a32;
+  --color-accent-soft: #c7a65c;
+  --color-bg: #fbfaf8;
+  --color-bg-alt: #f2eee3;
+  --color-card-bg: #fbfaf8;
+  --color-text: #2b2e33;
+  --color-text-muted: #4b4f56;
+  --color-text-soft: #6b6e74;
+  --color-border: #e7e2d6;
+}
+
+body {
+  overflow-x: clip;
+}
