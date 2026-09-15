@@ -5,7 +5,7 @@ export const contactSchema = z.object({
   email: z.string().trim().email('contact.errors.email'),
   phone: z.string().trim().optional().or(z.literal('')),
   message: z.string().trim().min(10, 'contact.errors.message'),
-  locale: z.enum(['es', 'en']),
+  locale: z.enum(['es', 'en', 'ar']),
 });
 
 export type ContactFormValues = z.infer<typeof contactSchema>;

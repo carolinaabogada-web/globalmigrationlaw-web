@@ -27,6 +27,12 @@ const ERROR_TEXT: Record<Locale, { name: string; email: string; message: string;
     message: "Please tell us a bit more about your case.",
     generic: "We couldn't send your message. Please try again or reach us on WhatsApp.",
   },
+  ar: {
+    name: "يرجى كتابة اسمك الكامل.",
+    email: "يرجى إدخال بريد إلكتروني صالح.",
+    message: "يرجى إخبارنا بمزيد من التفاصيل عن حالتك.",
+    generic: "تعذر إرسال رسالتك. حاول مرة أخرى أو تواصل معنا عبر واتساب.",
+  },
 };
 
 export function ContactForm({ locale, labels }: { locale: Locale; labels: Labels }) {
