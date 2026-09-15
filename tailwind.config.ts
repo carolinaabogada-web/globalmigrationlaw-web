@@ -25,8 +25,12 @@ const config: Config = {
         whatsapp: "#25D366",
       },
       fontFamily: {
-        serif: ["Georgia", "Times New Roman", "serif"],
-        sans: ["var(--font-public-sans)", "Arial", "sans-serif"],
+        // Georgia/Public Sans have no Arabic glyphs, so var(--font-arabic)
+        // (Noto Sans Arabic, loaded in app/layout.tsx) is appended as a
+        // fallback — the browser renders each character in the first font
+        // in the stack that actually has a glyph for it, automatically.
+        serif: ["Georgia", "var(--font-arabic)", "Times New Roman", "serif"],
+        sans: ["var(--font-public-sans)", "var(--font-arabic)", "Arial", "sans-serif"],
       },
       maxWidth: {
         site: "1320px",

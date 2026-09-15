@@ -5,9 +5,10 @@ import { getSiteSettings } from '@/sanity/lib/fetch';
 
 const FALLBACK_NOTIFICATION_EMAIL = 'diazcalderoncarolina@gmail.com';
 
-const EMAIL_SUBJECT: Record<'es' | 'en', (name: string) => string> = {
+const EMAIL_SUBJECT: Record<'es' | 'en' | 'ar', (name: string) => string> = {
   es: (name) => `Nueva consulta de ${name} — Global Migration Law`,
   en: (name) => `New inquiry from ${name} — Global Migration Law`,
+  ar: (name) => `استفسار جديد من ${name} — Global Migration Law`,
 };
 
 function buildEmailHtml(data: {
@@ -15,17 +16,19 @@ function buildEmailHtml(data: {
   email: string;
   phone?: string;
   message: string;
-  locale: 'es' | 'en';
+  locale: 'es' | 'en' | 'ar';
 }) {
   const labels =
     data.locale === 'en'
       ? { name: 'Name', email: 'Email', phone: 'Phone', message: 'Message' }
-      : {
-          name: 'Nombre',
-          email: 'Correo',
-          phone: 'Teléfono',
-          message: 'Mensaje',
-        };
+      : data.locale === 'ar'
+        ? { name: 'الاسم', email: 'البريد الإلكتروني', phone: 'الهاتف', message: 'الرسالة' }
+        : {
+            name: 'Nombre',
+            email: 'Correo',
+            phone: 'Teléfono',
+            message: 'Mensaje',
+          };
 
   return `
     <div style="font-family: Arial, sans-serif; font-size: 15px; color: #2B2E33;">

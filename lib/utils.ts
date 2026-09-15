@@ -6,18 +6,21 @@ export function cn(...inputs: ClassValue[]) {
   return clsx(inputs);
 }
 
-/** Resolves a bilingual Sanity field to a plain string for the current locale, falling back to Spanish. */
+/** Resolves a trilingual Sanity field to a plain string for the current locale, falling back to Spanish. */
 export function t(
   field: LocaleString | undefined | null,
   locale: Locale,
 ): string {
   if (!field) return '';
-  return (locale === 'en' ? field.en : field.es) || field.es || '';
+  if (locale === 'ar') return field.ar || field.es || '';
+  if (locale === 'en') return field.en || field.es || '';
+  return field.es || '';
 }
 
 const DEFAULT_WHATSAPP_TEXT: Record<Locale, string> = {
   es: 'Hola, quisiera una asesoría sobre mi caso de extranjería.',
   en: 'Hi, I would like advice on my immigration case.',
+  ar: 'مرحبًا، أرغب في استشارة بخصوص حالتي في الهجرة.',
 };
 
 export function buildWhatsAppLink(
