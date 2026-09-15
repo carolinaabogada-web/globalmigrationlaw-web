@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter } from '@/i18n/navigation';
 import { useParams } from 'next/navigation';
-import type { Locale } from '@/i18n/routing';
+import { routing, type Locale } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 
 export function LanguageSwitcher({ locale }: { locale: Locale }) {
@@ -20,7 +20,7 @@ export function LanguageSwitcher({ locale }: { locale: Locale }) {
 
   return (
     <div className='flex flex-shrink-0 items-center overflow-hidden rounded-full border border-[#D8D0BD] text-[13px] font-semibold'>
-      {(['es', 'en'] as const).map((code) => (
+      {routing.locales.map((code) => (
         <button
           key={code}
           type='button'

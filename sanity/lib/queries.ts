@@ -1,7 +1,7 @@
 import { groq } from 'next-sanity';
 
-const localeString = `{ es, en }`;
-const localeText = `{ es, en }`;
+const localeString = `{ es, en, ar }`;
+const localeText = `{ es, en, ar }`;
 const seo = `{ metaTitle ${localeString}, metaDescription ${localeText}, ogImage }`;
 const ctaBlock = `{ title ${localeString}, button ${localeString} }`;
 

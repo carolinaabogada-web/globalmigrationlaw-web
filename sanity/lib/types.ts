@@ -3,6 +3,7 @@ import type { Image } from 'sanity';
 export interface LocaleString {
   es: string;
   en?: string;
+  ar?: string;
 }
 
 export type LocaleText = LocaleString;
