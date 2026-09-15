@@ -94,6 +94,7 @@ async function main() {
   const carolinaRetrato = await uploadImage('carolina-retrato.png');
   const andreaPhoto = await uploadImage('andrea.jpg');
   const santiagoPhoto = await uploadImage('santiago.jpg');
+  const pilarPhoto = await uploadImage('pilar.png');
   // Specialty/value icons are NOT uploaded to Sanity — they're bundled as
   // code components (components/icons/) and selected via the `iconKey`
   // string field below, so there's nothing to keep in sync here.
@@ -242,6 +243,7 @@ async function main() {
       'A lawyer trained at Universidad de Salamanca, Pilar Alzate is part of the legal team at Global Migration Law, combining legal rigor with close, personal attention throughout each client’s immigration and nationality process.',
       'محامية من جامعة سلامنكا، بيلار ألزاتي عضو في الفريق القانوني لشركة Global Migration Law، حيث تجمع بين الدقة القانونية والتعامل القريب مع كل عميل في إجراءات الهجرة والجنسية.',
     ),
+    photo: pilarPhoto,
     isLead: false,
     order: 3,
   });
