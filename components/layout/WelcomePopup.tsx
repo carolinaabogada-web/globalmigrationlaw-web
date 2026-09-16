@@ -53,7 +53,14 @@ export function WelcomePopup({
         <p className='mb-6 text-[14.5px] leading-relaxed text-ink-muted'>
           {body}
         </p>
-        <Button href={waLink} external variant='primary' className='w-full'>
+        <Button
+          href={waLink}
+          external
+          variant='primary'
+          className='w-full'
+          trackEvent='whatsapp_click'
+          trackParams={{ ubicacion: 'popup_bienvenida' }}
+        >
           {buttonText}
         </Button>
       </div>

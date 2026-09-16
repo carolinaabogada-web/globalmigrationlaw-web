@@ -57,12 +57,23 @@ export function Hero({
 
           <div className="mb-8 flex flex-wrap gap-4 md:mb-9">
             {ctaPrimary ? (
-              <Button href={waLink} external variant="accent">
+              <Button
+                href={waLink}
+                external
+                variant="accent"
+                trackEvent="whatsapp_click"
+                trackParams={{ ubicacion: 'hero' }}
+              >
                 {ctaPrimary}
               </Button>
             ) : null}
             {ctaSecondary ? (
-              <Button href="#especialidades" variant="outline">
+              <Button
+                href="#especialidades"
+                variant="outline"
+                trackEvent="cta_click"
+                trackParams={{ cta: 'ver_especialidades', ubicacion: 'hero' }}
+              >
                 {ctaSecondary}
               </Button>
             ) : null}

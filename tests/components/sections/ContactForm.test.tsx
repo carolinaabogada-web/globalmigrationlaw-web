@@ -2,6 +2,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ContactForm } from '@/components/sections/ContactForm';
+import * as analytics from '@/lib/analytics';
 
 const labels = {
   name: 'Nombre',
@@ -65,6 +66,24 @@ describe('ContactForm', () => {
     expect(await screen.findByText('¡Enviado con éxito!')).toBeInTheDocument();
   });
 
+  it('tracks a formulario_contacto_enviado event on successful submit', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({ ok: true }));
+    const trackEventSpy = vi.spyOn(analytics, 'trackEvent');
+    const user = userEvent.setup();
+    renderForm();
+
+    await user.type(screen.getByPlaceholderText('Nombre'), 'Juan Pérez');
+    await user.type(screen.getByPlaceholderText('Correo'), 'juan@example.com');
+    await user.type(screen.getByPlaceholderText('Mensaje'), 'Necesito ayuda con mi visado.');
+    await user.click(screen.getByRole('button', { name: 'Enviar' }));
+
+    await waitFor(() =>
+      expect(trackEventSpy).toHaveBeenCalledWith('formulario_contacto_enviado', {
+        idioma: 'es',
+      }),
+    );
+  });
+
   it('shows a generic error message when the request fails', async () => {
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue({ ok: false }));
     const user = userEvent.setup();
@@ -80,5 +99,23 @@ describe('ContactForm', () => {
         'No pudimos enviar tu mensaje. Inténtalo de nuevo o escríbenos por WhatsApp.',
       ),
     ).toBeInTheDocument();
+  });
+
+  it('tracks a formulario_contacto_error event when the request fails', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({ ok: false }));
+    const trackEventSpy = vi.spyOn(analytics, 'trackEvent');
+    const user = userEvent.setup();
+    renderForm();
+
+    await user.type(screen.getByPlaceholderText('Nombre'), 'Juan Pérez');
+    await user.type(screen.getByPlaceholderText('Correo'), 'juan@example.com');
+    await user.type(screen.getByPlaceholderText('Mensaje'), 'Necesito ayuda con mi visado.');
+    await user.click(screen.getByRole('button', { name: 'Enviar' }));
+
+    await waitFor(() =>
+      expect(trackEventSpy).toHaveBeenCalledWith('formulario_contacto_error', {
+        idioma: 'es',
+      }),
+    );
   });
 });

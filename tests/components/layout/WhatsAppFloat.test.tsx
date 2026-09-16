@@ -15,4 +15,11 @@ describe('WhatsAppFloat', () => {
     expect(link).toHaveAttribute('target', '_blank');
     expect(link).toHaveAttribute('rel', 'noopener');
   });
+
+  it('carries a whatsapp_click tracking event for the floating button location', () => {
+    render(<WhatsAppFloat href="https://wa.me/123456" />);
+    const link = screen.getByRole('link', { name: 'WhatsApp' });
+    expect(link).toHaveAttribute('data-track-event', 'whatsapp_click');
+    expect(link).toHaveAttribute('data-track-params', '{"ubicacion":"boton_flotante"}');
+  });
 });
