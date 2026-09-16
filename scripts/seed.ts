@@ -123,14 +123,14 @@ async function main() {
       textSoft: '#6B6E74',
       border: '#E7E2D6',
     },
-    whatsappNumber: '34600000000',
+    whatsappNumber: '34621058576',
     whatsappDefaultMessage: ls(
       'Hola, quisiera una asesoría sobre mi caso de extranjería.',
       'Hi, I would like advice on my immigration case.',
       'مرحبًا، أرغب في استشارة بخصوص حالتي في الهجرة.',
     ),
-    contactEmail: 'contacto@dcmigracionlegal.com',
-    notificationEmail: 'diazcalderoncarolina@gmail.com',
+    contactEmail: 'carolina.abogada@globalmigrationlaw.es',
+    notificationEmail: 'carolina.abogada@globalmigrationlaw.es',
     address: ls('Madrid, España', 'Madrid, Spain', 'مدريد، إسبانيا'),
     trustpilotUrl: 'https://es.trustpilot.com/review/migrationlaw.es',
     footerTagline: ls(

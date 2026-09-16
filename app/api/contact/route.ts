@@ -3,7 +3,7 @@ import { contactSchema } from '@/lib/validations/contact';
 import { getResendClient } from '@/lib/resend';
 import { getSiteSettings } from '@/sanity/lib/fetch';
 
-const FALLBACK_NOTIFICATION_EMAIL = 'diazcalderoncarolina@gmail.com';
+const FALLBACK_NOTIFICATION_EMAIL = 'carolina.abogada@globalmigrationlaw.es';
 
 const EMAIL_SUBJECT: Record<'es' | 'en' | 'ar', (name: string) => string> = {
   es: (name) => `Nueva consulta de ${name} — Global Migration Law`,
