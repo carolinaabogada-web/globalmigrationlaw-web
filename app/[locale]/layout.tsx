@@ -16,6 +16,7 @@ import {
 } from '@/components/analytics/GoogleTagManager';
 import { MetaPixel } from '@/components/analytics/MetaPixel';
 import { LinkedInInsightTag } from '@/components/analytics/LinkedInInsightTag';
+import { EventTracker } from '@/components/analytics/EventTracker';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -99,6 +100,7 @@ export default async function LocaleLayout({
       <GoogleTagManagerScript />
       <MetaPixel />
       <LinkedInInsightTag />
+      <EventTracker />
     </NextIntlClientProvider>
   );
 }

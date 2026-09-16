@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils';
+import type { AnalyticsParams } from '@/lib/analytics';
 
 type Variant = 'primary' | 'accent' | 'whatsapp' | 'outline';
 
@@ -22,6 +23,9 @@ interface ButtonProps {
   type?: 'button' | 'submit';
   disabled?: boolean;
   onClick?: () => void;
+  /** Analytics event name (e.g. "whatsapp_click"). Read by EventTracker via data-track-event, so this works even though Button itself isn't a Client Component. */
+  trackEvent?: string;
+  trackParams?: AnalyticsParams;
 }
 
 export function Button({
@@ -33,6 +37,8 @@ export function Button({
   type = 'button',
   disabled,
   onClick,
+  trackEvent,
+  trackParams,
 }: ButtonProps) {
   const classes = cn(
     'inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-4 text-[15px] font-bold tracking-[0.3px] transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-60',
@@ -40,12 +46,22 @@ export function Button({
     className,
   );
 
+  const trackingAttrs = trackEvent
+    ? {
+        'data-track-event': trackEvent,
+        ...(trackParams
+          ? { 'data-track-params': JSON.stringify(trackParams) }
+          : {}),
+      }
+    : {};
+
   if (href) {
     return (
       <a
         href={href}
         className={classes}
         {...(external ? { target: '_blank', rel: 'noopener' } : {})}
+        {...trackingAttrs}
       >
         {children}
       </a>
@@ -58,6 +74,7 @@ export function Button({
       className={classes}
       disabled={disabled}
       onClick={onClick}
+      {...trackingAttrs}
     >
       {children}
     </button>

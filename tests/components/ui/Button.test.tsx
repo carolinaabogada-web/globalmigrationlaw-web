@@ -59,4 +59,30 @@ describe('Button', () => {
       expect(screen.getByRole('button', { name: variant })).toBeInTheDocument();
     },
   );
+
+  it('adds data-track-event and data-track-params on an anchor when tracking props are set', () => {
+    render(
+      <Button href="https://wa.me/123" external trackEvent="whatsapp_click" trackParams={{ ubicacion: 'hero' }}>
+        WhatsApp
+      </Button>,
+    );
+    const link = screen.getByRole('link', { name: 'WhatsApp' });
+    expect(link).toHaveAttribute('data-track-event', 'whatsapp_click');
+    expect(link).toHaveAttribute('data-track-params', JSON.stringify({ ubicacion: 'hero' }));
+  });
+
+  it('adds data-track-event on a native button when tracking props are set', () => {
+    render(
+      <Button trackEvent="cta_click">Enviar</Button>,
+    );
+    expect(screen.getByRole('button', { name: 'Enviar' })).toHaveAttribute(
+      'data-track-event',
+      'cta_click',
+    );
+  });
+
+  it('omits tracking attributes when no trackEvent is given', () => {
+    render(<Button href="/contact">Contact</Button>);
+    expect(screen.getByRole('link', { name: 'Contact' })).not.toHaveAttribute('data-track-event');
+  });
 });

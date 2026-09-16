@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { contactSchema, type ContactFormValues } from "@/lib/validations/contact";
 import type { Locale } from "@/i18n/routing";
+import { trackEvent } from "@/lib/analytics";
 
 interface Labels {
   name?: string;
@@ -57,10 +58,12 @@ export function ContactForm({ locale, labels }: { locale: Locale; labels: Labels
     });
 
     if (!response.ok) {
+      trackEvent("formulario_contacto_error", { idioma: locale });
       setError("root", { message: errorText.generic });
       return;
     }
 
+    trackEvent("formulario_contacto_enviado", { idioma: locale });
     reset({ name: "", email: "", phone: "", message: "", locale });
   }
 

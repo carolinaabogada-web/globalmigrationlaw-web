@@ -6,6 +6,8 @@ export function WhatsAppFloat({ href }: { href: string }) {
       rel='noopener'
       aria-label='WhatsApp'
       className='fixed bottom-6 right-6 z-[60] flex h-[62px] w-[62px] animate-pulse-soft items-center justify-center rounded-full shadow-[0_10px_24px_rgba(0,0,0,0.25)] transition-transform duration-200 hover:scale-105'
+      data-track-event='whatsapp_click'
+      data-track-params='{"ubicacion":"boton_flotante"}'
     >
       <svg viewBox='0 0 64 64' className='h-full w-full' aria-hidden>
         <path

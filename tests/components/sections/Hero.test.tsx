@@ -29,6 +29,15 @@ describe('Hero', () => {
     );
     expect(screen.getByText('Credential one')).toBeInTheDocument();
     expect(screen.getByText('Credential two')).toBeInTheDocument();
+
+    expect(screen.getByRole('link', { name: 'Habla con nosotros' })).toHaveAttribute(
+      'data-track-event',
+      'whatsapp_click',
+    );
+    expect(screen.getByRole('link', { name: 'Ver especialidades' })).toHaveAttribute(
+      'data-track-event',
+      'cta_click',
+    );
   });
 
   it('renders the background image when imageUrl is given', () => {

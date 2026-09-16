@@ -43,7 +43,14 @@ export function ContactSection({
           {body ? (
             <p className="mb-7 max-w-[420px] text-base leading-relaxed text-ink-muted">{body}</p>
           ) : null}
-          <Button href={waLink} external variant="whatsapp" className="mb-7">
+          <Button
+            href={waLink}
+            external
+            variant="whatsapp"
+            className="mb-7"
+            trackEvent="whatsapp_click"
+            trackParams={{ ubicacion: 'seccion_contacto' }}
+          >
             {ctaWhatsappLabel}
           </Button>
           <div className="flex flex-col gap-1 text-[14.5px] leading-[1.9] text-ink-soft">
