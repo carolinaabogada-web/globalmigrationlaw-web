@@ -55,7 +55,12 @@ export default async function RootLayout({
       dir='ltr'
       className={`${publicSans.variable} ${notoSansArabic.variable}`}
     >
-      <body className='font-sans'>{children}</body>
+      {/* suppressHydrationWarning: browser extensions (e.g. ColorZilla's
+          cz-shortcut-listen) inject attributes on <body> before React
+          hydrates. Only silences attribute diffs on this one element. */}
+      <body className='font-sans' suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }

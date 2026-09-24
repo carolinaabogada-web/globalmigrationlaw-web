@@ -28,6 +28,7 @@ export function HistorySection({
               alt="Carolina Díaz Calderón"
               width={640}
               height={800}
+              sizes="(min-width: 768px) 960px, 150vw"
               className="block aspect-[4/5] w-full rounded-2xl object-cover"
             />
           ) : (
