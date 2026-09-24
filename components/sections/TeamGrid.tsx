@@ -26,7 +26,12 @@ export function TeamGrid({ title, items }: { title?: string; items: Collaborator
             <div key={m.id} className="text-center">
               <div className="group relative mb-4 aspect-[3/3.4] w-full overflow-hidden rounded-2xl">
                 {m.photoUrl ? (
-                  <Image src={m.photoUrl} alt={m.name} fill className="object-cover" />
+                  <Image
+                    src={m.photoUrl}
+                    alt={m.name} fill
+                    sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover"
+                  />
                 ) : (
                   <div className="flex h-full w-full items-center justify-center bg-bg-alt font-serif text-5xl text-primary">
                     {m.initials}

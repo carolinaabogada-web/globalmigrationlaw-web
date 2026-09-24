@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -20,6 +21,22 @@ import { EventTracker } from '@/components/analytics/EventTracker';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSiteSettings();
+  const icon = urlForImage(settings?.favicon || settings?.logoIcon);
+  if (!icon) return {};
+
+  return {
+    icons: {
+      icon: [
+        { url: icon.width(32).height(32).format('png').url(), sizes: '32x32', type: 'image/png' },
+        { url: icon.width(192).height(192).format('png').url(), sizes: '192x192', type: 'image/png' },
+      ],
+      apple: { url: icon.width(180).height(180).format('png').url(), sizes: '180x180' },
+    },
+  };
 }
 
 export default async function LocaleLayout({

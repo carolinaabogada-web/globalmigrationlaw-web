@@ -32,6 +32,7 @@ export function LawyerIntro({
               alt={name || "Carolina Díaz Calderón"}
               width={640}
               height={800}
+              sizes="(min-width: 768px) 1100px, 450px"
               className="block aspect-square w-full rounded-2xl object-cover object-[55%_28%] md:aspect-[4/5]"
             />
           ) : (
