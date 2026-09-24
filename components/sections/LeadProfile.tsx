@@ -22,6 +22,7 @@ export function LeadProfile({
               alt={name || "Carolina Díaz Calderón"}
               width={640}
               height={853}
+              sizes="(min-width: 768px) 560px, 100vw"
               className="block aspect-[3/4] w-full rounded-2xl object-cover"
             />
           ) : (
