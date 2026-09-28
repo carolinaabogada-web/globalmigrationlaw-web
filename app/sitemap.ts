@@ -4,7 +4,7 @@ import { routing } from "@/i18n/routing";
 const PATHS = ["", "/especialidades", "/equipo", "/quienes-somos"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://dcmigracionlegal.com").replace(
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://globalmigrationlaw.es").replace(
     /\/$/,
     ""
   );
