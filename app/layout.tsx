@@ -49,15 +49,17 @@ export default async function RootLayout({
   // container's dir) — the only real cost of staying "ltr" is that
   // Arabic paragraphs align left instead of right.
 
+  // suppressHydrationWarning on <html>/<body>: browser extensions (e.g.
+  // Google Tag Assistant's data-tag-assistant-*, ColorZilla's
+  // cz-shortcut-listen) inject attributes before React hydrates. It only
+  // silences attribute diffs on that one element, not its children.
   return (
     <html
       lang={locale}
       dir='ltr'
       className={`${publicSans.variable} ${notoSansArabic.variable}`}
+      suppressHydrationWarning
     >
-      {/* suppressHydrationWarning: browser extensions (e.g. ColorZilla's
-          cz-shortcut-listen) inject attributes on <body> before React
-          hydrates. Only silences attribute diffs on this one element. */}
       <body className='font-sans' suppressHydrationWarning>
         {children}
       </body>
