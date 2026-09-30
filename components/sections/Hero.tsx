@@ -28,6 +28,8 @@ export function Hero({
           alt="Spanish passport and flag"
           fill
           priority
+          fetchPriority="high"
+          quality={70}
           sizes="100vw"
           className="absolute inset-0 object-cover object-[70%_45%]"
         />
