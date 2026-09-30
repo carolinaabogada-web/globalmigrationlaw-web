@@ -35,7 +35,7 @@ export function Header({
               alt='Global Migration Law'
               width={260}
               height={82}
-              priority
+              loading='eager'
               className='hidden h-[64px] w-auto max-w-[220px] object-contain lg:block lg:h-[82px] lg:max-w-[260px]'
             />
           ) : null}
@@ -45,7 +45,7 @@ export function Header({
               alt='Global Migration Law'
               width={46}
               height={46}
-              priority
+              loading='eager'
               className='h-[46px] w-auto max-w-[46px] object-contain lg:hidden'
             />
           ) : null}
