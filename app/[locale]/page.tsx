@@ -4,6 +4,7 @@ import { getHomePage, getSiteSettings } from '@/sanity/lib/fetch';
 import { urlForImage } from '@/sanity/lib/image';
 import { t, buildWhatsAppLink } from '@/lib/utils';
 import type { Locale } from '@/i18n/routing';
+import { pageAlternates } from '@/lib/seo';
 import { specialtyIcons } from '@/components/icons/SpecialtyIcons';
 import { Hero } from '@/components/sections/Hero';
 import { LawyerIntro } from '@/components/sections/LawyerIntro';
@@ -27,6 +28,7 @@ export async function generateMetadata({
       'Global Migration Law',
     description:
       t(home?.seo?.metaDescription, locale) || t(home?.heroSubtitle, locale),
+    alternates: pageAlternates('', locale),
   };
 }
 

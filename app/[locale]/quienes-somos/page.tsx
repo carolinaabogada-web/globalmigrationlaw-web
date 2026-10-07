@@ -4,6 +4,7 @@ import { getAboutPage, getSiteSettings } from '@/sanity/lib/fetch';
 import { urlForImage } from '@/sanity/lib/image';
 import { t, buildWhatsAppLink } from '@/lib/utils';
 import type { Locale } from '@/i18n/routing';
+import { pageAlternates } from '@/lib/seo';
 import { valueIcons } from '@/components/icons/ValueIcons';
 import { HistorySection } from '@/components/sections/HistorySection';
 import { MissionBanner } from '@/components/sections/MissionBanner';
@@ -22,6 +23,7 @@ export async function generateMetadata({
     title: t(page?.seo?.metaTitle, locale) || t(page?.historyTitle, locale),
     description:
       t(page?.seo?.metaDescription, locale) || t(page?.missionBody, locale),
+    alternates: pageAlternates('/quienes-somos', locale),
   };
 }
 
