@@ -3,6 +3,7 @@ import NextLink from 'next/link';
 import { getSpecialtiesPage, getSiteSettings } from '@/sanity/lib/fetch';
 import { t, buildWhatsAppLink } from '@/lib/utils';
 import type { Locale } from '@/i18n/routing';
+import { pageAlternates } from '@/lib/seo';
 import { specialtyIcons } from '@/components/icons/SpecialtyIcons';
 import { PageIntro } from '@/components/sections/PageIntro';
 import { SpecialtiesGrid } from '@/components/sections/SpecialtiesGrid';
@@ -19,6 +20,7 @@ export async function generateMetadata({
     title: t(page?.seo?.metaTitle, locale) || t(page?.title, locale),
     description:
       t(page?.seo?.metaDescription, locale) || t(page?.intro, locale),
+    alternates: pageAlternates('/especialidades', locale),
   };
 }
 

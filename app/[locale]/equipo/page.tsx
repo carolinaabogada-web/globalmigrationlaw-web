@@ -4,6 +4,7 @@ import { getTeamPage, getSiteSettings } from '@/sanity/lib/fetch';
 import { urlForImage } from '@/sanity/lib/image';
 import { t, buildWhatsAppLink } from '@/lib/utils';
 import type { Locale } from '@/i18n/routing';
+import { pageAlternates } from '@/lib/seo';
 import { PageIntro } from '@/components/sections/PageIntro';
 import { LeadProfile } from '@/components/sections/LeadProfile';
 import { TeamGrid } from '@/components/sections/TeamGrid';
@@ -30,6 +31,7 @@ export async function generateMetadata({
     title: t(page?.seo?.metaTitle, locale) || t(page?.title, locale),
     description:
       t(page?.seo?.metaDescription, locale) || t(page?.intro, locale),
+    alternates: pageAlternates('/equipo', locale),
   };
 }
 
