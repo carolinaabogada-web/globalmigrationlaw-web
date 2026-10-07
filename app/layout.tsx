@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Public_Sans, Noto_Sans_Arabic } from 'next/font/google';
 import { getLocale } from 'next-intl/server';
+import { SITE_URL } from '@/lib/seo';
 import './globals.css';
 
 const publicSans = Public_Sans({
@@ -23,6 +24,7 @@ const notoSansArabic = Noto_Sans_Arabic({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: 'Global Migration Law',
   description: 'Immigration, nationality, and residency lawyer in Spain.',
 };
